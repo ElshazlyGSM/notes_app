@@ -9,12 +9,12 @@ void customShowModalBottomSheet(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24.0),
       child: SingleChildScrollView(
-        child: Column(children: [
+        child: Column(children: const [
           CustomFormTextField(hintText: 'title',),
-          const SizedBox(height: 10,),
+          SizedBox(height: 10,),
           CustomFormTextField(maxLines: 5,hintText: 'subject'),
-          const SizedBox(height: 30,),
-          CustomButon(text: 'Add',),
+          SizedBox(height: 30,),
+          CustomButton(text: 'Add',),
         ],),
       ),
     );

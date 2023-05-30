@@ -29,7 +29,7 @@ class HomeNotesScreen extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            const CustomAppbar(),
+             const CustomAppbar(icon: Icons.search,text: 'Notes'),
             const SizedBox(
               height: 10,
             ),

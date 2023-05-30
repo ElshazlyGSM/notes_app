@@ -12,15 +12,12 @@ class NotesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute:  HomeNotesScreen.id,
+      initialRoute: HomeNotesScreen.id,
       routes: {
-        NotesScreen.id : (context ) => const NotesScreen(),
-        HomeNotesScreen.id : (context ) => const HomeNotesScreen(),
+        NotesScreen.id: (context) => const NotesScreen(),
+        HomeNotesScreen.id: (context) => const HomeNotesScreen(),
       },
-      theme: ThemeData(
-
-        brightness: Brightness.dark
-      ),
+      theme: ThemeData(brightness: Brightness.dark),
       debugShowCheckedModeBanner: false,
     );
   }
