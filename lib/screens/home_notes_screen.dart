@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/constants.dart';
-import 'package:notes_app/widgets/custom_ShowModalBottomSheet.dart';
+import 'package:notes_app/widgets/custom_floatingActionButton';
 import 'package:notes_app/widgets/custom_appbar.dart';
 import '../widgets/custom_notes.dart';
 
@@ -11,17 +10,7 @@ class HomeNotesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white,
-        child: const Icon(
-          Icons.add,
-          color: kPrimerColor,
-          size: 35,
-        ),
-        onPressed: () {
-          customShowModalBottomSheet(context);
-        },
-      ),
+      floatingActionButton: const CustomFloatingActionButton(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
