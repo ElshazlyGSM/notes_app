@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
 class CustomFormTextField extends StatelessWidget {
-  const CustomFormTextField({
+  const CustomFormTextField({super.key,
     this.hintText,
     this.onChanged,
     this.onSaved,
@@ -24,9 +24,9 @@ class CustomFormTextField extends StatelessWidget {
       maxLines: maxLines,
       obscureText: obscureText!,
       validator: (data) {
-        if (data!.isEmpty) {
+        if (data?.isEmpty ?? true) {
           return 'field is required';
-        }
+        }return null;
       },
       onChanged: onChanged,
       decoration: InputDecoration(

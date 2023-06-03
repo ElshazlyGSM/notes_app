@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/custom_appbar.dart';
 import 'package:notes_app/widgets/custom_floatingActionButton.dart';
-
 import 'package:notes_app/widgets/custom_notes.dart';
 
 
@@ -12,7 +11,7 @@ class HomeNotesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton:  CustomFloatingActionButton(),
+      floatingActionButton:  const CustomFloatingActionButton(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
