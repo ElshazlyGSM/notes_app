@@ -11,7 +11,7 @@ class HomeNotesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton:  const CustomFloatingActionButton(),
+      floatingActionButton: const CustomFloatingActionButton(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -19,7 +19,7 @@ class HomeNotesScreen extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-             const CustomAppbar(icon: Icons.search,text: 'Notes'),
+            const CustomAppbar(icon: Icons.search, text: 'Notes'),
             const SizedBox(
               height: 10,
             ),
