@@ -1,40 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/custom_appbar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes/notes_cubit.dart';
+import 'package:notes_app/widgets/body.dart';
 import 'package:notes_app/widgets/custom_floatingActionButton.dart';
-import 'package:notes_app/widgets/custom_notes.dart';
 
-
-class HomeNotesScreen extends StatelessWidget {
+class HomeNotesScreen extends StatefulWidget {
   const HomeNotesScreen({Key? key}) : super(key: key);
   static String id = 'homeNotesScreen';
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: const CustomFloatingActionButton(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 25,
-            ),
-            const CustomAppbar(icon: Icons.search, text: 'Notes'),
-            const SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(0),
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return const CustomNote();
-                  }),
-            ),
+  State<HomeNotesScreen> createState() => _HomeNotesScreenState();
+}
 
-          ],
-        ),
-      ),
+class _HomeNotesScreenState extends State<HomeNotesScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<NotesCubit>(context).getNotes();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      floatingActionButton: CustomFloatingActionButton(),
+      body: BuildBody(),
     );
   }
 }

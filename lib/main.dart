@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/constants.dart';
-import 'package:notes_app/cubits/add_notes_cubit/add_notes_cubit.dart';
 import 'package:notes_app/cubits/bloc_observer.dart';
+import 'package:notes_app/cubits/notes/notes_cubit.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/screens/home_notes_screen.dart';
-import 'package:notes_app/screens/notes_screen.dart';
+import 'package:notes_app/screens/edit_notes_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -22,14 +22,17 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: HomeNotesScreen.id,
-      routes: {
-        NotesScreen.id: (context) => const NotesScreen(),
-        HomeNotesScreen.id: (context) => const HomeNotesScreen(),
-      },
-      theme: ThemeData(brightness: Brightness.dark),
-      debugShowCheckedModeBanner: false,
+    return BlocProvider(
+      create: (context) => NotesCubit(),
+      child: MaterialApp(
+        initialRoute: HomeNotesScreen.id,
+        routes: {
+          EditNotesScreen.id: (context) => const EditNotesScreen(),
+          HomeNotesScreen.id: (context) => const HomeNotesScreen(),
+        },
+        theme: ThemeData(brightness: Brightness.dark),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

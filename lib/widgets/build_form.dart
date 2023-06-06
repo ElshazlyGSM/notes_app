@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_notes_cubit/add_notes_cubit.dart';
+import 'package:notes_app/cubits/notes/notes_cubit.dart';
 import 'package:notes_app/model/notes_model.dart';
+import 'package:notes_app/widgets/chosse_color.dart';
 import 'package:notes_app/widgets/custom_Button.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
 
@@ -23,7 +25,8 @@ class _BuildFormState extends State<BuildForm> {
       create: (context) => AddNotesCubit(),
       child: BlocConsumer<AddNotesCubit, AddNotesState>(
         listener: (context, state) {
-          if(state is AddNotesSuccess){
+          if (state is AddNotesSuccess) {
+            BlocProvider.of<NotesCubit>(context).getNotes();
             Navigator.pop(context);
           }
         },
@@ -58,12 +61,18 @@ class _BuildFormState extends State<BuildForm> {
                       },
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 15,
+                    ),
+                     SizedBox(
+                      height: 80,
+                        child: ChooseColor()),
+                    const SizedBox(
+                      height: 15,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16),
                       child: CustomButton(
-                        isLoading: state is AddNotesLoading ?  true : false,
+                        isLoading: state is AddNotesLoading ? true : false,
                         text: 'Add',
                         onTap: () {
                           if (formKey.currentState!.validate()) {
@@ -71,10 +80,10 @@ class _BuildFormState extends State<BuildForm> {
                             var notesModel = NotesModel(
                                 subTitle: subTitle!,
                                 title: title!,
-                                color: Colors.amber.value,
+                                color: BlocProvider.of<NotesCubit>(context).color?.value ?? const Color(0xfff44336).value,
                                 date: DateTime.now().toString());
                             BlocProvider.of<AddNotesCubit>(context)
-                                .addNotes(notesModel);
+                                .addNotes(notesModel, context);
                           } else {
                             autoValidateMode = AutovalidateMode.always;
                             setState(() {});
